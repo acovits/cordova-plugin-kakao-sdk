@@ -1,26 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-   id="cordova-plugin-kakao-sdk"
-   name="cordova-plugin-kakao-sdk"
-   version="3.0.6">
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="cordova-plugin-kakao-sdk" name="cordova-plugin-kakao-sdk" version="3.0.6">
 
     <name>KakaoCordovaSDK</name>
     <description>Kakao Cordova SDK Plugin</description>
 
-	<engines>
-		<engine name="cordova-android" version=">3.9.9" /><!-- Requires Gradle building -->
-	</engines>
+    <engines>
+        <engine name="cordova-android" version=">3.9.9" />
+        <!-- Requires Gradle building -->
+    </engines>
     <js-module src="www/AuthConstant.js" name="AuthConstant">
-        <clobbers target="AuthConstant" />
+        <clobbers target="cordova.plugins.kakao.AuthConstant" />
     </js-module>
 
     <js-module name="KakaoCordovaSDK" src="www/KakaoCordovaSDK.js">
-    	<clobbers target="KakaoCordovaSDK" />
+        <clobbers target="cordova.plugins.kakao.SDK" />
     </js-module>
 
-	<preference name="KAKAO_APP_KEY" />
+    <preference name="KAKAO_APP_KEY" />
 
-	<platform name="android">
+    <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="KakaoCordovaSDK">
                 <param name="android-package" value="com.raccoondev85.plugin.kakao.KakaoCordovaSDK" />
@@ -29,7 +27,7 @@
             <access origin="https://*.kakao.co.kr" />
             <access origin="https://*.kakaocdn.net" />
         </config-file>
-        
+
         <source-file src="src/android/res/values/kakao_strings.xml" target-dir="res/values" />
         <source-file src="src/android/res/values-ko/kakao_strings.xml" target-dir="res/values-ko" />
         <config-file target="res/values/kakao_strings.xml" parent="/*">
@@ -38,17 +36,17 @@
             <string name="kakaolink_host">kakaolink</string>
         </config-file>
 
-        
-        
+
+
         <config-file target="AndroidManifest.xml" parent="/manifest">
             <uses-permission android:name="android.permission.INTERNET" />
             <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
         </config-file>
-        
+
         <config-file target="AndroidManifest.xml" parent="application">
-        	<meta-data android:name="com.kakao.sdk.AppKey" android:value="@string/kakao_app_key" />
+            <meta-data android:name="com.kakao.sdk.AppKey" android:value="@string/kakao_app_key" />
         </config-file>
-        
+
         <config-file target="AndroidManifest.xml" parent="application/activity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -59,7 +57,7 @@
         </config-file>
 
         <framework src="src/android/kakao.gradle" custom="true" type="gradleReference" />
-		<source-file src="src/android/KakaoCordovaSDK.java" target-dir="src/com/raccoondev85/plugin/kakao" />
+        <source-file src="src/android/KakaoCordovaSDK.java" target-dir="src/com/raccoondev85/plugin/kakao" />
         <source-file src="src/android/KakaoResources.java" target-dir="src/com/raccoondev85/plugin/kakao" />
         <source-file src="src/android/KakaoStoryLink.java" target-dir="src/com/raccoondev85/plugin/kakao" />
         <source-file src="src/android/KakaoCordovaErrorHandler.java" target-dir="src/com/raccoondev85/plugin/kakao" />
@@ -73,7 +71,7 @@
         <resource-file src="src/android/res/layout/layout_login_item.xml" target="res/layout/layout_login_item.xml" />
 
     </platform>
-    
+
     <platform name="ios">
         <config-file target="config.xml" parent="/*">
             <feature name="KakaoCordovaSDK">
@@ -95,17 +93,17 @@
             </array>
         </config-file>
         <config-file target="*-Info.plist" parent="LSApplicationQueriesSchemes">
-          <array>
-            <string>kakao$KAKAO_APP_KEY</string>
-            <string>kakaokompassauth</string>
-            <string>storykompassauth</string>
-            <string>kakaolink</string>
-            <string>storylink</string>
-            <string>kakaotalk-5.9.7</string>
-            <string>kakaostory-2.9.0</string>
-          </array>
+            <array>
+                <string>kakao$KAKAO_APP_KEY</string>
+                <string>kakaokompassauth</string>
+                <string>storykompassauth</string>
+                <string>kakaolink</string>
+                <string>storylink</string>
+                <string>kakaotalk-5.9.7</string>
+                <string>kakaostory-2.9.0</string>
+            </array>
         </config-file>
-        
+
         <framework src="QuartzCore.framework" />
         <framework src="src/ios/KakaoCommon.framework" custom="true" />
         <framework src="src/ios/KakaoLink.framework" custom="true" />
@@ -118,6 +116,6 @@
         <header-file src="src/ios/KakaoCordovaSDK.h" />
         <source-file src="src/ios/KakaoCordovaStoryLinkHelper.m" />
         <header-file src="src/ios/KakaoCordovaStoryLinkHelper.h" />
-        
+
     </platform>
 </plugin>
