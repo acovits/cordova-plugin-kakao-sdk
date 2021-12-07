@@ -1,16 +1,34 @@
 repositories {
-	mavenCentral()
-    maven { url 'http://devrepo.kakao.com:8088/nexus/content/groups/public/' }
+	google()
+	jcenter()
+    maven { 
+		url 'https://devrepo.kakao.com/nexus/content/groups/public/' 
+		allowInsecureProtocol = true
+	}
 }
 
 dependencies {
-	compile('com.kakao.sdk:kakaotalk:1.16.0@aar') {
-		transitive = true
-	}
-	compile('com.kakao.sdk:kakaolink:1.16.0@aar') {
-		transitive = true
-	}
-	compile('com.kakao.sdk:plusfriend:1.16.0@aar') {
-		transitive = true
-	}
+	// compile('com.kakao.sdk:kakaotalk:1.16.0@aar') {
+	// 	transitive = true
+	// }
+	// compile('com.kakao.sdk:kakaolink:1.16.0@aar') {
+	// 	transitive = true
+	// }
+	// compile('com.kakao.sdk:plusfriend:1.16.0@aar') {
+	// 	transitive = true
+	// }
+	// 카카오 로그인
+    implementation group: 'com.kakao.sdk', name: 'usermgmt', version: '1.30.6'
+
+    // 카카오톡
+    implementation group: 'com.kakao.sdk', name: 'kakaotalk', version: '1.30.6'
+
+    // 카카오스토리
+    implementation group: 'com.kakao.sdk', name: 'kakaostory', version: '1.30.6'
+
+    // 카카오링크
+    implementation group: 'com.kakao.sdk', name: 'kakaolink', version: '1.30.6'
+
+    // 카카오내비
+    implementation group: 'com.kakao.sdk', name: 'kakaonavi', version: '1.30.6'
 }
