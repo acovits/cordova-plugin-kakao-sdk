@@ -16,7 +16,7 @@
         <clobbers target="cordova.plugins.kakao.SDK" />
     </js-module>
 
-    <preference name="KAKAO_APP_KEY" />
+    <preference name="KAKAO_APP_KEY" default="1dac6886bde20472c5f93a1cc80a4517" />
 
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
